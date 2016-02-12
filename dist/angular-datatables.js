@@ -841,6 +841,7 @@ function dtNGRenderer($log, $q, $compile, $timeout, DTRenderer, DTRendererServic
     function create(options) {
         var _staticHTML;
         var _oTable;
+        var _newValue;
         var _$elem;
         var _parentScope;
         var _newParentScope;
@@ -873,9 +874,11 @@ function dtNGRenderer($log, $q, $compile, $timeout, DTRenderer, DTRendererServic
 
             var _alreadyRendered = false;
 
-            _parentScope.$watchCollection(_ngRepeatAttr, function() {
+            _parentScope.$watchCollection(_ngRepeatAttr, function(newValue) {
                 if (_oTable && _alreadyRendered) {
-                    _destroyAndCompile();
+                    if(_newValue !== newValue) {
+                        _destroyAndCompile();
+                    }
                 }
                 $timeout(function() {
                     _alreadyRendered = true;
