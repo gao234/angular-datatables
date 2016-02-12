@@ -41,7 +41,7 @@ The files can be downloaded from:
 **With Bower**
 
 ```
-bower install angular-datatables
+bower install angular-datatables-patched
 ```
 
 ### Installation
